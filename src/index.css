@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CARBONTRACE v9.0 — HIGH-POLISH NEO-BRUTALISM
+   ============================================================ */
+
+:root {
+  /* ── BACKGROUND ── */
+  --bg-base: #FAFAFA;
+  --bg-card: #FFFFFF;
+  
+  /* ── SOLID NEO-BRUTALIST COLORS ── */
+  --nb-black: #0F0F0F;
+  --nb-white: #FFFFFF;
+  --nb-pink: #FF6B9E;
+  --nb-yellow: #FFD23F;
+  --nb-cyan: #38E4FF;
+  --nb-lime: #B8F239;
+  --nb-green: #00E676;
+  --nb-purple: #B288FF;
+
+  /* ── TEXT ── */
+  --text-primary: #0F0F0F;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+
+  /* ── GEOMETRY ── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --t-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: all 0.15s ease-out;
+
+  /* Shadows */
+  --shadow-hard: 4px 4px 0px var(--nb-black);
+  --shadow-hard-lg: 8px 8px 0px var(--nb-black);
+  --shadow-hard-hover: 2px 2px 0px var(--nb-black);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 15px;
+  line-height: 1.6;
+  
+  /* Subtle comic dots background */
+  background-image: radial-gradient(var(--text-muted) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-attachment: fixed;
+}
+
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   NEO-BRUTALIST CARDS
+   ============================================================ */
+.nb-card {
+  background: var(--bg-card);
+  border: 3px solid var(--nb-black);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard);
+  padding: 24px;
+  transition: var(--t-spring);
+  position: relative;
+}
+
+.nb-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+/* Card color variants */
+.nb-card.pink { background: var(--nb-pink); }
+.nb-card.yellow { background: var(--nb-yellow); }
+.nb-card.cyan { background: var(--nb-cyan); }
+.nb-card.lime { background: var(--nb-lime); }
+.nb-card.purple { background: var(--nb-purple); }
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+  width: 280px;
+  min-height: 100vh;
+  background: var(--nb-white);
+  border-right: 4px solid var(--nb-black);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  z-index: 100;
+  box-shadow: 4px 0 0 rgba(0,0,0,0.1);
+}
+
+.sidebar-logo {
+  padding: 24px;
+  border-bottom: 4px solid var(--nb-black);
+  background: var(--nb-yellow);
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon-box {
+  width: 48px; height: 48px;
+  background: var(--nb-white);
+  border: 3px solid var(--nb-black);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 2px 2px 0 var(--nb-black);
+}
+
+.logo-text-box h1 {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--nb-black);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.logo-text-box p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--nb-black);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Nav */
+.nav-section { padding: 20px 16px; flex: 1; }
+
+.nav-section-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 900;
+  color: var(--nb-black);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-item {
+  display: flex; align-items: center; gap: 14px; width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 3px solid transparent;
+  background: transparent;
+  color: var(--nb-black);
+  font-size: 16px; font-weight: 800;
+  font-family: 'Space Grotesk', sans-serif;
+  cursor: pointer; transition: var(--t-fast);
+  margin-bottom: 8px;
+}
+
+.nav-item:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.nav-item.active {
+  background: var(--nb-cyan);
+  border: 3px solid var(--nb-black);
+  box-shadow: 2px 2px 0 var(--nb-black);
+  transform: translate(-1px, -1px);
+}
+
+.nav-icon { font-size: 22px; }
+
+/* Sidebar User Profile */
+.sidebar-user {
+  margin: 16px; padding: 16px;
+  background: var(--nb-white);
+  border: 3px solid var(--nb-black);
+  border-radius: var(--radius-sm);
+  box-shadow: 2px 2px 0 var(--nb-black);
+}
+
+.user-avatar-circle {
+  width: 44px; height: 44px;
+  background: var(--nb-pink);
+  border: 3px solid var(--nb-black);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+
+.user-name { font-family: 'Space Grotesk', sans-serif; font-weight: 900; font-size: 16px; color: var(--nb-black); }
+.user-level-tag { font-size: 12px; font-weight: 700; color: var(--text-muted); }
+
+.xp-bar {
+  height: 12px; background: var(--nb-white);
+  border: 2px solid var(--nb-black);
+  border-radius: 6px; overflow: hidden; margin-top: 12px;
+}
+.xp-bar-fill {
+  height: 100%; background: var(--nb-lime);
+  border-right: 2px solid var(--nb-black);
+  transition: width 0.5s ease;
+}
+
+/* ============================================================
+   MAIN CONTENT & HEADER
+   ============================================================ */
+.main-content { margin-left: 280px; flex: 1; min-width: 0; padding: 40px; }
+
+.page-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 900; font-size: 48px; line-height: 1;
+  color: var(--nb-black); text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--nb-cyan);
+}
+.page-subtitle { font-size: 18px; color: var(--text-secondary); font-weight: 600; margin-top: 12px; max-width: 600px; border-left: 4px solid var(--nb-black); padding-left: 12px; }
+
+.page-header-divider {
+  height: 4px;
+  background: var(--nb-black);
+  width: 100%;
+  margin: 32px 0;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 28px; font-size: 16px; font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif; cursor: pointer; transition: var(--t-fast);
+  border: 3px solid var(--nb-black); border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 var(--nb-black);
+}
+
+.btn-primary {
+  background: var(--nb-lime);
+  color: var(--nb-black);
+}
+.btn-primary:hover:not(:disabled) {
+  background: #C4FA42;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--nb-black);
+}
+.btn-primary:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0 var(--nb-black);
+}
+
+.btn-outline {
+  background: var(--nb-white);
+  color: var(--nb-black);
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--bg-base);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--nb-black);
+}
+
+.btn:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; transform: none; }
+
+/* ============================================================
+   PILLS
+   ============================================================ */
+.pill {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+  border-radius: var(--radius-full); font-size: 13px; font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  border: 2px solid var(--nb-black);
+  box-shadow: 1px 1px 0 var(--nb-black);
+}
+
+.pill-green { background: var(--nb-green); color: var(--nb-black); }
+.pill-cyan  { background: var(--nb-cyan); color: var(--nb-black); }
+.pill-pink  { background: var(--nb-pink); color: var(--nb-black); }
+.pill-yellow{ background: var(--nb-yellow); color: var(--nb-black); }
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+.form-label { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 900; color: var(--nb-black); margin-bottom: 8px; }
+
+.form-select, .form-input {
+  width: 100%; padding: 16px;
+  background: var(--nb-white);
+  border: 3px solid var(--nb-black);
+  border-radius: var(--radius-sm);
+  color: var(--nb-black); font-size: 16px; font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  transition: var(--t-fast); outline: none;
+  box-shadow: inset 2px 2px 0 rgba(0,0,0,0.05);
+}
+.form-select:focus, .form-input:focus {
+  border-color: var(--nb-black);
+  box-shadow: 2px 2px 0 var(--nb-black);
+  transform: translate(-1px, -1px);
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px; font-weight: 900; color: var(--nb-black); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 10px;
+  text-transform: uppercase;
+}
+
+@keyframes comicPop {
+  0% { transform: scale(0.9); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-pop { animation: comicPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+@keyframes slideUpHurdle {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.animate-fade-in { animation: slideUpHurdle 0.4s ease-out forwards; }
+
+/* ============================================================
+   LIVE TICKER (Comic Breaking News style)
+   ============================================================ */
+.live-ticker {
+  display: flex;
+  border: 4px solid var(--nb-black);
+  background: var(--nb-white);
+  overflow: hidden;
+  margin-bottom: 32px;
+  border-radius: var(--radius-sm);
+  box-shadow: 4px 4px 0 var(--nb-black);
+}
+
+.ticker-label {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--nb-yellow),
+    var(--nb-yellow) 10px,
+    #000 10px,
+    #000 20px
+  );
+  color: var(--nb-white);
+  padding: 12px 24px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-right: 4px solid var(--nb-black);
+  z-index: 2;
+  text-shadow: 1px 1px 0 #000;
+  white-space: nowrap;
+}
+
+.ticker-scroll-wrap {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--nb-white);
+}
+
+.ticker-inner {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollLeft 40s linear infinite;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.ticker-entry {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 40px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--nb-black);
+}
+
+.ticker-val {
+  color: var(--nb-pink);
+  font-weight: 900;
+  margin-left: 8px;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   TOASTS
+   ============================================================ */
+.toast-container {
+  position: fixed; bottom: 30px; right: 30px;
+  display: flex; flex-direction: column; gap: 16px; z-index: 9999;
+}
+.toast-notification {
+  background: var(--nb-white);
+  border: 4px solid var(--nb-black);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: 4px 4px 0 var(--nb-black);
+  animation: comicPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  cursor: pointer;
+  max-width: 350px;
+}
+.toast-icon-box {
+  font-size: 24px;
+}
+.toast-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 900; font-size: 16px; color: var(--nb-black);
+}
+.toast-msg {
+  font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-top: 4px;
+}
